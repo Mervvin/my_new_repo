@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="customer_payment_details_report_form" model="ir.ui.view">
+        <field name="name">customer.payment.details.report.form</field>
+        <field name="model">customer.payment.details.report</field>
+        <field name="arch" type="xml">
+            <form string ="Customer Payment Details Report">
+                <group>
+                    <group>
+                        <field name = "from_date" required = 'True'/>
+                    </group>
+                    <group>
+                        <field name = "to_date" required = 'True'/>
+                        <field name = "company_id" invisible = 'True'/>
+                    </group>
+                </group>
+                <footer>
+                    <button icon="fa-print" string="Print" name="customer_payment_details_report_xlsx" type="object"
+                            class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_payment_details_report_action" model="ir.actions.act_window">
+        <field name="name">Customer Payment Details Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.payment.details.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="customer_payment_details_report_form"/>
+    </record>
+
+    <menuitem id="customer_payment_details_report_menu"
+              name="Customer Payment Details Report"
+              parent="account.menu_finance_reports"
+              action="customer_payment_details_report_action"
+              sequence="1"/>
+</odoo>

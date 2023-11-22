@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_payment_print_pdf" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">50</field>
+            <field name="header_line" eval="False"/>
+        </record>
+
+        <record id="customer_payment_details_report_pdf" model="ir.actions.report">
+            <field name="name">Customer Payment Details Report</field>
+            <field name="model">customer.payment.details.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">customer_payment_details.report.customer_payment_details_template_id</field>
+            <field name="report_file">customer_payment_details_report.customer_payment_details_template_id</field>
+            <field name="binding_model_id" ref="model_customer_payment_details_report"/>
+            <field name="paperformat_id" ref="customer_payment_report.paperformat_payment_print_pdf"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>
